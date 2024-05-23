@@ -3,7 +3,7 @@ import Split from 'react-split';
 import Ai from '../component/Ai';
 import Query from '../component/Query';
 import '../css/topscreen.css';
-import runAPI from '../api/geminiGenerator';
+import runAPI from '../api/getSPARQL';
 import { useState } from 'react';
 
 
