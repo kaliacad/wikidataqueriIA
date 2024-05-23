@@ -16,24 +16,26 @@ This project enables users to write and execute SPARQL queries on Wikidata direc
 ## Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/kaliacad/wikidataqueriIA.git
-    cd wikidataqueriIA
-    ```
+
+   ```sh
+   git clone https://github.com/kaliacad/wikidataqueriIA.git
+   cd wikidataqueriIA
+   ```
 
 2. Install dependencies:
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 ## Usage
 
 1. Start the development server:
-    ```sh
-    npm start
-    ```
 
-2. Open your browser and navigate to `http://localhost:3000`.
+   ```sh
+   npm run dev
+   ```
+
+2. Open your browser and navigate to `http://localhost:5173`.
 
 ## Folder Structure
 
