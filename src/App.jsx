@@ -11,7 +11,7 @@ function App() {
     <main role='main' className='h-screen w-[100%] flex flex-col'>
       <div className='flex-1 h-[100%]'>
         <Split className="split">
-          <div>
+          <div className='flex flex-col'>
             <Query text={'something new about programming'} />
             <Ai text={'something new about programming'} />
           </div>
