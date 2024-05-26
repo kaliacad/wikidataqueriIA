@@ -3,35 +3,31 @@ import Markdown from "react-markdown";
 export default function Ai({ text }) {
   return (
     <>
-      <div className="h-[100%] flex flex-col bg-white">
-        <header className="bg-slate-700 h-[5%] flex justify-center text-white">
-          Wikidata Queri AI
-        </header>
+      <div className="">
         <main className="flex-grow p-2">
           <div className="chat chat-end">
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
-                  src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  // src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                 />
               </div>
             </div>
-            <div className="bg-slate-400  text-slate-700 chat-bubble text-sm">
+            <div className="chat-bubble text-sm">
               Les femmes politiciennes de la RDC
             </div>
           </div>
-
           <div className="chat chat-start">
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
-                  src="https://cdn-icons-png.flaticon.com/512/786/786153.png"
+                  // src="https://cdn-icons-png.flaticon.com/512/786/786153.png"
                 />
               </div>
             </div>
-            <div className="bg-slate-200 text-slate-700 chat-bubble text-sm">
+            <div className="chat-bubble text-sm">
               <Markdown>{text}</Markdown>
             </div>
           </div>
