@@ -2,7 +2,7 @@
 export default function Query({ text }) {
   const query = text.replace("```sparql", "").replace("```", "");
   return (
-    <div className="w-[80%] bg-slate-50">
+    <div className="flex-1 border-b border-[#eee]">
       <iframe
         className=""
         src={`https://query.wikidata.org/#${encodeURIComponent(query)}`}
