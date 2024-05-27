@@ -4,7 +4,7 @@ export default function Query({ text }) {
   return (
     <div className="flex-1 border-b border-[#eee]">
       <iframe
-        className=""
+        className="bg-red"
         src={`https://query.wikidata.org/#${encodeURIComponent(query)}`}
         style={{ width: "100%", "max-width": "100%", height: "100%" }}
         frameBorder="0"
