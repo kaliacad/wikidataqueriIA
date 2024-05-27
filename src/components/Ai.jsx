@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 export default function Ai({ text }) {
   const handleSubmit = (ev) => {
     ev.preventDefault();
-  }
+  };
   return (
     <aside className="flex-1 border-t border-[#eee]">
       <div className="flex-grow p-2">
