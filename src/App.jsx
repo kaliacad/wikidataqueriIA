@@ -55,7 +55,6 @@ function App() {
           cursor="col-resize"
         >
           <div className="flex flex-col">
-            <Query text={text} />
             <Ai
               text={text}
               handleSubmit={handleSubmit}
@@ -63,6 +62,7 @@ function App() {
               input={input}
               handleChange={handleChange}
             />
+            <Query text={text} />
           </div>
           <Resultat />
         </Split>
