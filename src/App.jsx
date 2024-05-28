@@ -37,12 +37,12 @@ function App() {
           cursor="col-resize"
         >
           <div className="flex flex-col">
-            <Query text={text} />
             <Ai
               text={
                 "je vais les femmes politiciennes en RDC donnez moi le code SPARQL en commentaire"
               }
             />
+            <Query text={text} />
           </div>
           <Resultat />
         </Split>
