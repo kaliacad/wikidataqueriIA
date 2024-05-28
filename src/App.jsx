@@ -5,6 +5,7 @@ import Resultat from "./components/Resultat";
 import Split from "react-split";
 import Footer from "./components/Footer";
 import getSPARQL from "./api/getSPARQL";
+import getGPT from "./api/getGPT";
 
 function App() {
   const [input, setInput] = useState("");
@@ -12,27 +13,30 @@ function App() {
 
   const handleChange = (e) => {
     setInput(e.target.value);
-  }
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     setInput("");
 
-    setMessage([...message, { user: "me", msg: `${input}` }, { user: "ai", msg: `${text}` }])
-  }
+    setMessage([
+      ...message,
+      { user: "me", msg: `${input}` },
+      { user: "ai", msg: `${text}` },
+    ]);
+  };
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   useEffect(() => {
     async function loadAPI() {
       try {
-        const resp = await getSPARQL(`${input} en sparql`);
+        const resp = await getGPT();
         setText(resp);
       } catch (err) {
         console.log({ message: err.stack });
       }
     }
     loadAPI();
-
   }, []);
 
   return (
@@ -52,7 +56,13 @@ function App() {
         >
           <div className="flex flex-col">
             <Query text={text} />
-            <Ai text={text} handleSubmit={handleSubmit} message={message} input={input} handleChange={handleChange} />
+            <Ai
+              text={text}
+              handleSubmit={handleSubmit}
+              message={message}
+              input={input}
+              handleChange={handleChange}
+            />
           </div>
           <Resultat />
         </Split>
