@@ -39,7 +39,7 @@ function App() {
           <div className="flex flex-col">
             <Ai
               text={
-                "je vais les femmes politiciennes en RDC donnez moi le code SPARQL en commentaire"
+                "je veux une liste des femmes politiques en RDC. Donne moi le code SPARQL en commentaire"
               }
             />
             <Query text={text} />
