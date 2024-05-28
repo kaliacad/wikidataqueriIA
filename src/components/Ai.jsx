@@ -1,47 +1,32 @@
+import { useState } from "react";
 import Markdown from "react-markdown";
 
-export default function Ai({ text }) {
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-  };
+
+
+export default function Ai({ handleSubmit, message, input, handleChange }) {
+
+
   return (
     <aside className="flex-1 border-t border-[#eee]">
       <div className="flex-grow p-2">
-        <div className="chat chat-end">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS chat bubble component"
-                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              />
-            </div>
-          </div>
-          <div className="chat-bubble text-sm">{text}</div>
-        </div>
-        <div className="chat chat-start">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS chat bubble component"
-                src="https://cdn-icons-png.flaticon.com/512/786/786153.png"
-              />
-            </div>
-          </div>
-          <div className="chat-bubble text-sm">
-            <Markdown>{text}</Markdown>
-          </div>
-        </div>
+
+        {message.map((itm, index) => (
+          <Message key={index} texte={itm} />
+        ))}
+
       </div>
+
       <div className=" h-[30px] justify-self-end">
         <form
           onSubmit={handleSubmit}
-          value=""
           className="flex justify-between h-[100%] border-slate-300 border-2 border-solid  rounded-full "
         >
           <input
             type="text"
             placeholder="Ecrivez votre question"
             className="flex-grow  rounded-full pl-3 text-sm"
+            value={input}
+            onChange={handleChange}
           />
           <button
             type="submit"
@@ -54,3 +39,22 @@ export default function Ai({ text }) {
     </aside>
   );
 }
+
+const Message = ({ texte }) => {
+  return (
+    <div className={`${texte.user == "ai" ? "chat chat-start" : "chat chat-end"}`}>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS chat bubble component"
+            src={`${texte.user == "ai" ? "https://cdn-icons-png.flaticon.com/512/786/786153.png" : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}`}
+          />
+        </div>
+      </div>
+      <div className="chat-bubble text-sm">
+        <Markdown>{texte.msg}</Markdown>
+      </div>
+    </div>
+  )
+}
+

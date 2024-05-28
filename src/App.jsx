@@ -7,20 +7,34 @@ import Footer from "./components/Footer";
 import getSPARQL from "./api/getSPARQL";
 
 function App() {
-  const [text, setText] = useState("");
+  const [input, setInput] = useState("");
+  const [message, setMessage] = useState([]);
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    setInput("");
+
+    setMessage([...message, { user: "me", msg: `${input}` }, { user: "ai", msg: `${text}` }])
+  }
+
+  const [text, setText] = useState('');
   useEffect(() => {
     async function loadAPI() {
       try {
-        const resp = await getSPARQL(
-          "je vais les femmes politiciennes en RDC donnez moi le code SPARQL en commentaire"
-        );
+        const resp = await getSPARQL(`${input} en sparql`);
         setText(resp);
       } catch (err) {
         console.log({ message: err.stack });
       }
     }
     loadAPI();
+
   }, []);
+
   return (
     <main role="main" className="h-screen w-[100%] flex flex-col">
       <div className="flex-1 h-[100%]">
@@ -38,11 +52,7 @@ function App() {
         >
           <div className="flex flex-col">
             <Query text={text} />
-            <Ai
-              text={
-                "je vais les femmes politiciennes en RDC donnez moi le code SPARQL en commentaire"
-              }
-            />
+            <Ai text={text} handleSubmit={handleSubmit} message={message} input={input} handleChange={handleChange} />
           </div>
           <Resultat />
         </Split>
