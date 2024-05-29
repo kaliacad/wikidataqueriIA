@@ -1,5 +1,7 @@
+import { API_KEY } from '../../env';
+
 async function getGPT(question) {
-  const API_KEY = ""; // Remplacez par votre clé API réelle
+  // const API_KEY = ""; // Remplacez par votre clé API réelle
   const apiUrl = "https://api.openai.com/v1/chat/completions";
 
   console.log(question);

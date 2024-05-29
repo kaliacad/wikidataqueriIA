@@ -43,7 +43,6 @@ export default function Resultat() {
           <h1>Loading...</h1>
         ) : (
           <div>
-            <h1>Female Politicians in RDC</h1>
             <ul className="px-4 py-4" style={{ overflow: 'scroll' }}>
               {data.map((item, index) => (
                 <li key={index} className="bg-blue-500 mb-2 px-1 py-2 text-white">
