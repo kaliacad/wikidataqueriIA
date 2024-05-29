@@ -1,5 +1,6 @@
+import { API_KEY } from "../../env.js";
+
 async function getGPT(question) {
-  const API_KEY = ""; // Remplacez par votre clé API réelle
   const apiUrl = "https://api.openai.com/v1/chat/completions";
 
   console.log(question);
@@ -9,7 +10,7 @@ async function getGPT(question) {
       method: "POST",
       headers: {
         "content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Bearer ${api_key}`,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",

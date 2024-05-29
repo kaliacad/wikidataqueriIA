@@ -19,18 +19,18 @@ export default function Resultat() {
       ORDER BY ?personLabel
     `;
 
-    const endpointUrl = 'https://query.wikidata.org/sparql';
-    const fullUrl = endpointUrl + '?query=' + encodeURIComponent(sparqlQuery);
-    const headers = { 'Accept': 'application/sparql-results+json' };
+    const endpointUrl = "https://query.wikidata.org/sparql";
+    const fullUrl = endpointUrl + "?query=" + encodeURIComponent(sparqlQuery);
+    const headers = { Accept: "application/sparql-results+json" };
 
     fetch(fullUrl, { headers })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setData(data.results.bindings);
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching the data:', error);
+      .catch((error) => {
+        console.error("Error fetching the data:", error);
         setLoading(false);
       });
   }, []);
@@ -42,19 +42,22 @@ export default function Resultat() {
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div>
-            <h1>Female Politicians in RDC</h1>
-            <ul className="px-4 py-4" style={{ overflow: 'scroll' }}>
+          <div className="max-h-[88vh] overflow-scroll">
+            <ul className="px-4 py-4" style={{ overflow: "scroll" }}>
               {data.map((item, index) => (
-                <li key={index} className="bg-blue-500 mb-2 px-1 py-2 text-white">
-                  <p>
-                    {item.personLabel.value}
+                <li
+                  key={index}
+                  className="bg-blue-500 mb-2 px-1 py-2 text-white"
+                >
+                  <p className="text-base font-bold">
+                    <a href={item.person.value} target="_blank">
+                      {item.personLabel.value}
+                    </a>
                   </p>
                   <p>
-                    {item.positionLabel ? item.positionLabel.value : 'No position specified'}
-                  </p>
-                  <p>
-                    {item.person.value}
+                    {item.positionLabel
+                      ? item.positionLabel.value
+                      : "No position specified"}
                   </p>
                 </li>
               ))}

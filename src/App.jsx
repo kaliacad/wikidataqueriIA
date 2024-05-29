@@ -5,7 +5,6 @@ import Resultat from "./components/Resultat";
 import Split from "react-split";
 import Footer from "./components/Footer";
 import getSPARQL from "./api/getSPARQL";
-import getGPT from "./api/getGPT";
 
 function App() {
   const [input, setInput] = useState("");
@@ -30,7 +29,7 @@ function App() {
   useEffect(() => {
     async function loadAPI() {
       try {
-        const resp = await getGPT();
+        const resp = await getSPARQL(`${input} en sparql`);
         setText(resp);
       } catch (err) {
         console.log({ message: err.stack });
@@ -55,6 +54,7 @@ function App() {
           cursor="col-resize"
         >
           <div className="flex flex-col">
+            <Query text={text} />
             <Ai
               text={text}
               handleSubmit={handleSubmit}
@@ -62,7 +62,6 @@ function App() {
               input={input}
               handleChange={handleChange}
             />
-            <Query text={text} />
           </div>
           <Resultat />
         </Split>
