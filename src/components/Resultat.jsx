@@ -45,7 +45,7 @@ export default function Resultat() {
           <div>
             <ul className="px-4 py-4" style={{ overflow: 'scroll' }}>
               {data.map((item, index) => (
-                <li key={index} className="bg-blue-500 mb-2 px-1 py-2 text-white">
+                <li key={index} className="bg-slate-700  mb-2 px-1 py-2 text-white">
                   <p>
                     {item.personLabel.value}
                   </p>
