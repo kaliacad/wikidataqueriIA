@@ -9,6 +9,7 @@ import getSPARQL from "./api/getSPARQL";
 function App() {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState([]);
+  const [text, setText] = useState("");
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -25,11 +26,11 @@ function App() {
     ]);
   };
 
-  const [text, setText] = useState("");
   useEffect(() => {
     async function loadAPI() {
       try {
-        const resp = await getSPARQL(`${input} en sparql`);
+        const resp = await getGPT(input);
+        // const resp = await getSPARQL(`${input} en sparql, dans le code utilise seulement wdt: et wd:`);
         setText(resp);
       } catch (err) {
         console.log({ message: err.stack });

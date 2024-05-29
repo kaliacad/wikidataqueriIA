@@ -7,8 +7,8 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
 
 
   return (
-    <aside className="flex-1 border-t border-[#eee]">
-      <div className="flex-grow p-2">
+    <aside className=" flex-1 border-t border-[#eee] ">
+      <div className=" h-[25rem] p-2 overflow-scroll ">
 
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
@@ -42,7 +42,7 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
 
 const Message = ({ texte }) => {
   return (
-    <div className={`${texte.user == "ai" ? "chat chat-start" : "chat chat-end"}`}>
+    <div className={`${texte.user == "ai" ? " chat chat-start" : "chat chat-end"}`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img
@@ -51,7 +51,7 @@ const Message = ({ texte }) => {
           />
         </div>
       </div>
-      <div className="chat-bubble text-sm">
+      <div className={`${texte.user == "me" ? "chat-bubble text-sm": "bg-slate-300 text-black  chat-bubble text-sm"}`}>
         <Markdown>{texte.msg}</Markdown>
       </div>
     </div>

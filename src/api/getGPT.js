@@ -1,6 +1,8 @@
+
 import { API_KEY } from "../../env.js";
 
 async function getGPT(question) {
+
   const apiUrl = "https://api.openai.com/v1/chat/completions";
 
   console.log(question);
@@ -17,7 +19,7 @@ async function getGPT(question) {
         messages: [
           {
             role: "user",
-            content: `les pays de l'afrique. donne le code sparql et utilise seulement le "wdt" et les "wd"`,
+            content: `${question} donne le code sparql et utilise seulement le "wdt" et les "wd"`,
           },
         ],
         max_tokens: 100,

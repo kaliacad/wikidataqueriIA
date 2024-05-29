@@ -26,3 +26,5 @@ env.js
 *.sw?
 
 src/css/guide.md
+
+env.js
