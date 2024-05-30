@@ -1,19 +1,13 @@
 import { useState } from "react";
 import Markdown from "react-markdown";
 
-
-
 export default function Ai({ handleSubmit, message, input, handleChange }) {
-
-
   return (
     <aside className=" flex-1 border-t border-[#eee] ">
-      <div className=" h-[25rem] p-2 overflow-scroll ">
-
+      <div className=" h-[45vh] p-2 overflow-scroll ">
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
         ))}
-
       </div>
 
       <div className=" h-[30px] justify-self-end">
@@ -24,7 +18,7 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
           <input
             type="text"
             placeholder="Ecrivez votre question"
-            className="flex-grow  rounded-full pl-3 text-sm"
+            className="flex-grow  rounded-l-full pl-3 text-sm bg-white"
             value={input}
             onChange={handleChange}
           />
@@ -42,19 +36,30 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
 
 const Message = ({ texte }) => {
   return (
-    <div className={`${texte.user == "ai" ? " chat chat-start" : "chat chat-end"}`}>
+    <div
+      className={`${texte.user == "ai" ? " chat chat-start" : "chat chat-end"}`}
+    >
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS chat bubble component"
-            src={`${texte.user == "ai" ? "https://cdn-icons-png.flaticon.com/512/786/786153.png" : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}`}
+            src={`${
+              texte.user == "ai"
+                ? "https://cdn-icons-png.flaticon.com/512/786/786153.png"
+                : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            }`}
           />
         </div>
       </div>
-      <div className={`${texte.user == "me" ? "chat-bubble text-sm": "bg-slate-300 text-black  chat-bubble text-sm"}`}>
+      <div
+        className={`${
+          texte.user == "me"
+            ? "chat-bubble text-sm"
+            : "bg-slate-300 text-black  chat-bubble text-sm"
+        }`}
+      >
         <Markdown>{texte.msg}</Markdown>
       </div>
     </div>
-  )
-}
-
+  );
+};

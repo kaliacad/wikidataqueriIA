@@ -4,7 +4,6 @@ import Query from "./components/Query";
 import Resultat from "./components/Resultat";
 import Split from "react-split";
 import Footer from "./components/Footer";
-import getSPARQL from "./api/getSPARQL";
 import getGPT from "./api/getGPT";
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     setInput("");
-
+    console.log(input);
     setMessage([
       ...message,
       { user: "me", msg: `${input}` },
