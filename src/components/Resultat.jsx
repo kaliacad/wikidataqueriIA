@@ -1,27 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { TextContext } from "../contexts/textContext";
 import Header from "./Header";
 
 export default function Resultat() {
+  const { sparqlText } = useContext(TextContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // vous pouvez prendre le text et le passe ici pour renvoyer les resultat
-    const sparqlQuery = `
-      SELECT ?person ?personLabel ?positionLabel WHERE {
-        ?person wdt:P31 wd:Q5;        # Is a human
-                wdt:P21 wd:Q6581072;  # Is female
-                wdt:P106 wd:Q82955;   # Is a politician
-                wdt:P27 wd:Q974.      # Nationality is Democratic Republic of the Congo
-        OPTIONAL { ?person wdt:P39 ?position. }
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-      }
-      ORDER BY ?personLabel
-    `;
 
-    const endpointUrl = "https://query.wikidata.org/sparql";
-    const fullUrl = endpointUrl + "?query=" + encodeURIComponent(sparqlQuery);
-    const headers = { Accept: "application/sparql-results+json" };
+    const endpointUrl = 'https://query.wikidata.org/sparql';
+    const fullUrl = endpointUrl + '?query=' + encodeURIComponent(sparqlText);
+    const headers = { 'Accept': 'application/sparql-results+json', 'origin': '*' };
 
     fetch(fullUrl, { headers })
       .then((response) => response.json())

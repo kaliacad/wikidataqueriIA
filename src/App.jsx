@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { TextContext } from './contexts/textContext';
 import Ai from "./components/Ai";
 import Query from "./components/Query";
 import Resultat from "./components/Resultat";
@@ -7,6 +8,7 @@ import Footer from "./components/Footer";
 import getGPT from "./api/getGPT";
 
 function App() {
+  const { sparqlText, setSPARQLText } = useContext(TextContext);
   const [input, setInput] = useState("");
   const [message, setMessage] = useState([]);
   const [text, setText] = useState("");
@@ -14,31 +16,36 @@ function App() {
   const handleChange = (e) => {
     setInput(e.target.value);
   };
+  // useEffect(() => {
+  //   async function loadAPI() {
+  //     try {
+  //       const resp = await getGPT(input);
+  //       setText(resp);
+  //       setSPARQLText(resp);
+  //     } catch (err) {
+  //       alert({ message: err.message });
+  //     }
+  //   }
+  //   loadAPI();
+  // }, []);
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
     setInput("");
-    console.log(input);
+
+    try {
+      const resp = await getGPT(input);
+      setText(resp);
+      setSPARQLText(resp);
+    } catch (err) {
+      alert({ message: err.message });
+    }
     setMessage([
       ...message,
       { user: "me", msg: `${input}` },
       { user: "ai", msg: `${text}` },
     ]);
   };
-
-  useEffect(() => {
-    async function loadAPI() {
-      try {
-        const resp = await getGPT(input);
-        // const resp = await getSPARQL(`${input} en sparql, dans le code utilise seulement wdt: et wd:`);
-        setText(resp);
-      } catch (err) {
-        console.log({ message: err.stack });
-      }
-    }
-    loadAPI();
-  }, []);
-
   return (
     <main role="main" className="h-screen max-h-full w-[100%] flex flex-col">
       <div className="flex-1 h-[100%]">
