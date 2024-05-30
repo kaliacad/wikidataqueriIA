@@ -33,6 +33,7 @@ function App() {
         const resp = await getGPT(input);
         // const resp = await getSPARQL(`${input} en sparql, dans le code utilise seulement wdt: et wd:`);
         setText(resp);
+        console.log(resp);
       } catch (err) {
         console.log({ message: err.stack });
       }
