@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function Query({ text }) {
-  const query = text.replace("```sparql", "").replace("```", "");
+  const query = text.replaceAll("```sparql", "").replaceAll("```", "");
   return (
     <div className="flex-1 border-b border-[#eee]">
       <iframe

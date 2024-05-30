@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <main role="main" className="h-screen w-[100%] flex flex-col">
+    <main role="main" className="h-screen max-h-full w-[100%] flex flex-col">
       <div className="flex-1 h-[100%]">
         <Split
           className="split"
