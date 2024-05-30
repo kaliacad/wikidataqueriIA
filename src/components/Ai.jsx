@@ -3,8 +3,8 @@ import Markdown from "react-markdown";
 
 export default function Ai({ handleSubmit, message, input, handleChange }) {
   return (
-    <aside className=" flex-1 border-t border-[#eee] ">
-      <div className=" h-[45vh] p-2 overflow-scroll ">
+    <aside className=" flex-1 border-t border-[#eee]">
+      <div className="h-[45vh] p-2 overflow-scroll ">
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
         ))}

@@ -42,7 +42,7 @@ export default function Resultat() {
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div className="h-[100vh] overflow-scroll">
+          <div className="h-[83vh] overflow-scroll">
             <ul className="px-4 py-4">
               {data.map((item, index) => (
                 <li
