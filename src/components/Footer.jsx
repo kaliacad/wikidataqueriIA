@@ -1,44 +1,68 @@
+import { FaReadme } from "react-icons/fa";
+import { LuMessagesSquare } from "react-icons/lu";
+import { FaCode } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { MdOutlineAttribution } from "react-icons/md";
+import { IoBugSharp } from "react-icons/io5";
+
+
 export default function Footer() {
+
+  const media = [
+    {
+      icon: <FaReadme size={25} />,
+      link: 'https://github.com/kaliacad/wikidataqueriIA/wiki',
+      title: 'Documentation',
+    },
+    {
+      icon: <FaCode size={25} />,
+      link: "https://github.com/kaliacad/wikidataqueriIA",
+      title: "View source",
+    },
+    {
+      icon: <IoBugSharp size={25} />,
+      link: "https://github.com/kaliacad/wikidataqueriIA/issues",
+      title: 'Report an issue'
+    },
+    {
+      icon: <LuMessagesSquare size={25} />,
+      link: 'https://github.com/kaliacad/wikidataqueriIA/issues',
+      title: 'Feedback'
+    },
+    {
+      icon: <FaUsers size={25} />,
+      link: "https://github.com/kaliacad",
+      title: "Developed by Kali Academy"
+    },
+    {
+      icon: <MdOutlineAttribution size={25} />,
+      link: "https://github.com/kaliacad",
+      title: "kaliacad"
+    }
+  ];
+
+
+  const showMenu = media.map(function (m, i) {
+    return (
+      <li>
+        <a
+          href={`${m?.link}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2"
+        >
+          <div>{m.icon}</div>
+          <p className="font-bold">{m.title}</p>
+        </a>
+      </li>
+    );
+  });
+
   return (
-    <footer className="flex items-center h-[50px] absolute bottom-0 w-full bg-blue-950 opacity-100">
+    <footer className="flex items-center h-[50px] absolute bottom-0 w-full bg-[#506efa] opacity-100">
       <ul className="text-white flex justify-around items-center w-full">
-        <li>
-          <a
-            href="https://m.wikidata.org/wiki/Wikidata:Main_Page?uselang=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Wikidata
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/kaliacad/wikidataqueriIA"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/kaliacad/wikidataqueriIA/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Feedback
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/kaliacad/wikidataqueriIA/blob/main/README.md"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </li>
+        {showMenu}
       </ul>
-    </footer>
+    </footer >
   );
 }
