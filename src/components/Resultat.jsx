@@ -1,51 +1,35 @@
-import { useState, useEffect, useContext } from "react";
-import { TextContext } from "../contexts/textContext";
+import { useState } from "react";
 import Header from "./Header";
+import Element from "./Element";
 
-export default function Resultat() {
-  const { sparqlText } = useContext(TextContext);
+export default function Resultat({ text }) {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  console.log(data);
 
-  useEffect(() => {
+  const onClick = () => {
     const endpointUrl = "https://query.wikidata.org/sparql";
-    const fullUrl = endpointUrl + "?query=" + encodeURIComponent(sparqlText);
+    const fullUrl = endpointUrl + "?query=" + encodeURIComponent(text);
     const headers = { Accept: "application/sparql-results+json", origin: "*" };
 
     fetch(fullUrl, { headers })
       .then((response) => response.json())
       .then((data) => {
         setData(data.results.bindings);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching the data:", error);
-        setLoading(false);
       });
-  }, []);
-  console.log(data);
+  };
+
   return (
     <aside className="h-[100%] flex flex-col">
-      <Header />
+      <Header onClick={onClick} />
       <div className="">
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          <div className="h-[87vh] overflow-scroll">
+        {data && (
+          <div className="h-[83vh] overflow-scroll">
             <ul className="px-4 py-4">
               {data.map((item, index) => (
-                <li
-                  key={index}
-                  className="bg-slate-700  mb-2 px-1 py-2 text-white"
-                >
-                  <p>{item.personLabel.value}</p>
-                  <p>
-                    {item.positionLabel
-                      ? item.positionLabel.value
-                      : "No position specified"}
-                  </p>
-                  <p>{item.person.value}</p>
-                </li>
+                <Element key={index} item={item} />
               ))}
             </ul>
           </div>
