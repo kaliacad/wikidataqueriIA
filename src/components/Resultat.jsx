@@ -8,10 +8,9 @@ export default function Resultat() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    const endpointUrl = 'https://query.wikidata.org/sparql';
-    const fullUrl = endpointUrl + '?query=' + encodeURIComponent(sparqlText);
-    const headers = { 'Accept': 'application/sparql-results+json', 'origin': '*' };
+    const endpointUrl = "https://query.wikidata.org/sparql";
+    const fullUrl = endpointUrl + "?query=" + encodeURIComponent(sparqlText);
+    const headers = { Accept: "application/sparql-results+json", origin: "*" };
 
     fetch(fullUrl, { headers })
       .then((response) => response.json())
@@ -32,7 +31,7 @@ export default function Resultat() {
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div className="h-[83vh] overflow-scroll">
+          <div className="h-[87vh] overflow-scroll">
             <ul className="px-4 py-4">
               {data.map((item, index) => (
                 <li
