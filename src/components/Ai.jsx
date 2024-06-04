@@ -1,10 +1,10 @@
-import { useState } from "react";
 import Markdown from "react-markdown";
+import { LuSendHorizonal } from "react-icons/lu";
 
 export default function Ai({ handleSubmit, message, input, handleChange }) {
   return (
     <aside className=" flex-1 border-t border-[#eee]">
-      <div className="h-[45vh] p-2 overflow-scroll ">
+      <div className="h-[45vh] p-4 overflow-scroll ">
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
         ))}
@@ -13,20 +13,20 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
       <div className=" h-[30px] justify-self-end">
         <form
           onSubmit={handleSubmit}
-          className="flex justify-between h-[100%] border-slate-300 border-2 border-solid  rounded-full "
+          className="flex justify-between border-[#506efa] border-2 border-solid  rounded-full mx-4 p-2 outline-none"
         >
           <input
             type="text"
             placeholder="Ecrivez votre question"
-            className="flex-grow  rounded-l-full pl-3 text-sm bg-white"
+            className="flex-grow  rounded-l-full pl-3 text-sm bg-white outline-none"
             value={input}
             onChange={handleChange}
           />
           <button
             type="submit"
-            className="bg-slate-800 text-white w-[3.5rem] cursor-pointer hover:bg-slate-700 border-2 border-solid rounded-r-full text-sm"
+            className="cursor-pointer rounded-r-full"
           >
-            send
+            <LuSendHorizonal size={25} color="#506efa" />
           </button>
         </form>
       </div>
