@@ -3,7 +3,7 @@ export default function Header({ onClick }) {
     <header className="bg-[#eee] h-[50px] flex justify-between items-center text-slate-700 pr-3">
       <button
         onClick={onClick}
-        className="bg-slate-700 text-white px-24 h-10 font-bold hover:text-slate-400"
+        className="bg-[#506efa] px-24 h-10 font-bold text-white"
       >
         RUN
       </button>

@@ -36,7 +36,7 @@ export default function Footer() {
     },
     {
       icon: <MdOutlineAttribution size={25} />,
-      link: "https://github.com/kaliacad",
+      link: "https://kaliacademy.org/",
       title: "kaliacad"
     }
   ];
