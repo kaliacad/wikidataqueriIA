@@ -26,8 +26,8 @@ export default function Resultat({ text }) {
       <Header onClick={onClick} />
       <div className="">
         {data && (
-          <div className="h-[83vh] overflow-scroll">
-            <ul className="px-4 py-4">
+          <div className=" h-[83vh] overflow-scroll">
+            <ul className=" px-4 py-4">
               {data.map((item, index) => (
                 <Element key={index} item={item} />
               ))}

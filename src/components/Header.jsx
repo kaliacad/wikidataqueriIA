@@ -7,7 +7,7 @@ export default function Header({ onClick }) {
       >
         RUN
       </button>
-      <h1 className="text-3xl font-semibold">Wikidata Query AI</h1>
+      <h1 className="text-[#506efa] text-3xl font-semibold">Wikidata Query AI</h1>
     </header>
   );
 }

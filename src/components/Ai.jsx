@@ -4,16 +4,16 @@ import { LuSendHorizonal } from "react-icons/lu";
 export default function Ai({ handleSubmit, message, input, handleChange }) {
   return (
     <aside className=" flex-1 border-t border-[#eee]">
-      <div className="h-[45vh] p-4 overflow-scroll ">
+      <div className="h-[45vh] p-4 overflow-scroll">
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
         ))}
       </div>
 
-      <div className=" h-[30px] justify-self-end">
+      <div className="h-[45px] justify-self-end">
         <form
           onSubmit={handleSubmit}
-          className="flex justify-between border-[#506efa] border-2 border-solid  rounded-full mx-4 p-2 outline-none"
+          className=" flex justify-between border-[#506efa] border-2 border-solid  rounded-full mx-4 p-2 outline-none"
         >
           <input
             type="text"
@@ -54,8 +54,8 @@ const Message = ({ texte }) => {
       <div
         className={`${
           texte.user == "me"
-            ? "chat-bubble text-sm"
-            : "bg-slate-300 text-black  chat-bubble text-sm"
+            ? "bg-[#506efa] text-white chat-bubble text-sm"
+            : "bg-[#d0d9fa] text-black  chat-bubble text-sm"
         }`}
       >
         <Markdown>{texte.msg}</Markdown>
