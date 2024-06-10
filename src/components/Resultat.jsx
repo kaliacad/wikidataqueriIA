@@ -39,29 +39,29 @@ export default function Resultat({ text }) {
     <aside className="h-[100%] flex flex-col">
       <Header onClick={onClick} />
       <div className="">
-        {data && (
+        {data.length > 0 && (
           <div className="h-[89vh] overflow-scroll">
             <ul className="px-4 py-4">
               {res.map((item, index) => (
                 <Element key={index} item={item} />
               ))}
-              <div className="flex justify-between px-4 mt-4">
-                <button
-                  onClick={handleClickPrev}
-                  disabled={page === 1}
-                  className="bg-[#506efa] text-white px-3 py-1 rounded-md"
-                >
-                  Previous
-                </button>
-                <button
-                  onClick={handleClickNext}
-                  disabled={start + items >= data.length}
-                  className="bg-[#506efa] text-white px-3 py-1 rounded-md"
-                >
-                  Next
-                </button>
-              </div>
             </ul>
+            <div className="flex justify-between px-4 mt-4">
+              <button
+                onClick={handleClickPrev}
+                disabled={page === 1}
+                className="bg-[#506efa] text-white px-3 py-1 rounded-md"
+              >
+                Previous
+              </button>
+              <button
+                onClick={handleClickNext}
+                disabled={start + items >= data.length}
+                className="bg-[#506efa] text-white px-3 py-1 rounded-md"
+              >
+                Next
+              </button>
+            </div>
           </div>
         )}
       </div>
