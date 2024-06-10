@@ -13,8 +13,13 @@
 [![Github tag](https://badgen.net/github/tag/Naereen/Strapdown.js)](https://github.com/Naereen/kaliacad/wikidataqueriIA/tags/)
 [![Latest release](https://badgen.net/github/release/Naereen/Strapdown.js)](https://github.com/kaliacad/wikidataqueriIA/releases)
 
-## ABOUT
+### WikidataQuery + Resultat
 
+![](./public/screenshots/wikidata-query-with-data.png)
+
+### WikidataQuery + While fetching data
+
+![](./public/screenshots/wikidata-query-white-fetching-data.png)
 
 This project enables users to write and execute SPARQL queries on Wikidata directly within an Express.js application, without needing to visit the Wikidata website.
 
