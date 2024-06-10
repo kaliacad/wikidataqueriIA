@@ -6,7 +6,6 @@ export default function Resultat({ text }) {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const items = 15;
-  console.log(data);
 
   const onClick = () => {
     const endpointUrl = "https://query.wikidata.org/sparql";
@@ -32,8 +31,37 @@ export default function Resultat({ text }) {
     setPage((prevPage) => prevPage - 1);
   };
 
+  const handlePageClick = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
   const start = (page - 1) * items;
   const res = data.slice(start, start + items);
+  const totalPages = Math.ceil(data.length / items);
+
+  // Générer les numéros de page avec la logique de limitation et de points de suspension
+  const pageNumbers = [];
+  if (totalPages <= 5) {
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+  } else {
+    pageNumbers.push(1);
+    if (page > 3) {
+      pageNumbers.push("...");
+    }
+    let startPage = Math.max(2, page - 1);
+    let endPage = Math.min(totalPages - 1, page + 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    if (page < totalPages - 2) {
+      pageNumbers.push("...");
+    }
+    pageNumbers.push(totalPages);
+  }
 
   return (
     <aside className="h-[100%] flex flex-col">
@@ -54,6 +82,22 @@ export default function Resultat({ text }) {
               >
                 Previous
               </button>
+              <div className="flex">
+                {pageNumbers.map((pageNumber, index) => (
+                  <button
+                    key={index}
+                    onClick={() => typeof pageNumber === 'number' && handlePageClick(pageNumber)}
+                    className={`px-3 py-1 rounded-md mx-1 ${
+                      pageNumber === page
+                        ? "bg-[#506efa] text-white"
+                        : "bg-gray-300 text-gray-700"
+                    }`}
+                    disabled={typeof pageNumber !== 'number'}
+                  >
+                    {pageNumber}
+                  </button>
+                ))}
+              </div>
               <button
                 onClick={handleClickNext}
                 disabled={start + items >= data.length}
