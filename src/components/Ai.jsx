@@ -4,7 +4,7 @@ import { LuSendHorizonal } from "react-icons/lu";
 export default function Ai({ handleSubmit, message, input, handleChange }) {
   return (
     <aside className=" flex-1 border-t border-[#eee]">
-      <div className="h-[45vh] p-4 overflow-scroll">
+      <div className="h-[45vh] p-4 overflow-y-scroll scrollbar-thumb-[h-1] scrollbar-track-gray-700">
         {message.map((itm, index) => (
           <Message key={index} texte={itm} />
         ))}
@@ -43,20 +43,18 @@ const Message = ({ texte }) => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS chat bubble component"
-            src={`${
-              texte.user == "ai"
+            src={`${texte.user == "ai"
                 ? "https://cdn-icons-png.flaticon.com/512/786/786153.png"
                 : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-            }`}
+              }`}
           />
         </div>
       </div>
       <div
-        className={`${
-          texte.user == "me"
+        className={`${texte.user == "me"
             ? "bg-[#506efa] text-white chat-bubble text-sm"
             : "bg-[#d0d9fa] text-black  chat-bubble text-sm"
-        }`}
+          }`}
       >
         <Markdown>{texte.msg}</Markdown>
       </div>
