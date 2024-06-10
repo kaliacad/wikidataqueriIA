@@ -1,26 +1,36 @@
 import { useState } from "react";
 import Header from "./Header";
 import Element from "./Element";
+import { ResultatSqueletton } from './Loader';
+
+
 
 export default function Resultat({ text }) {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const items = 15;
 
   const onClick = () => {
     const endpointUrl = "https://query.wikidata.org/sparql";
     const fullUrl = endpointUrl + "?query=" + encodeURIComponent(text);
     const headers = { Accept: "application/sparql-results+json", origin: "*" };
+    setLoading(true);
 
     fetch(fullUrl, { headers })
       .then((response) => response.json())
       .then((data) => {
         setData(data.results.bindings);
         setPage(1);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching the data:", error);
-      });
+        setLoading(false);
+      })
+      .finally(function () {
+        setLoading(false);
+      })
   };
 
   const handleClickNext = () => {
@@ -63,6 +73,25 @@ export default function Resultat({ text }) {
     pageNumbers.push(totalPages);
   }
 
+  if (loading) {
+    return (
+      <aside className="h-[100%] flex flex-col">
+        <Header onClick={onClick} />
+        <div className="px-4 py-4">
+          {
+            [1, 2, 3, 4, 5, 6, 7].map(function (d, i) {
+              return (
+                <ResultatSqueletton
+                  key={`${d + i}`}
+                />
+              );
+            })
+          }
+        </div>
+      </aside>
+    )
+  }
+
   return (
     <aside className="h-[100%] flex flex-col">
       <Header onClick={onClick} />
@@ -87,11 +116,10 @@ export default function Resultat({ text }) {
                   <button
                     key={index}
                     onClick={() => typeof pageNumber === 'number' && handlePageClick(pageNumber)}
-                    className={`px-3 py-1 rounded-md mx-1 ${
-                      pageNumber === page
-                        ? "bg-[#506efa] text-white"
-                        : "bg-gray-300 text-gray-700"
-                    }`}
+                    className={`px-3 py-1 rounded-md mx-1 ${pageNumber === page
+                      ? "bg-[#506efa] text-white"
+                      : "bg-gray-300 text-gray-700"
+                      }`}
                     disabled={typeof pageNumber !== 'number'}
                   >
                     {pageNumber}
