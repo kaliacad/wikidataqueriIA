@@ -1,7 +1,13 @@
 import Markdown from "react-markdown";
 import { LuSendHorizonal } from "react-icons/lu";
+import { FaSpinner } from "react-icons/fa";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Ai({ handleSubmit, message, input, handleChange }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const handleClick = () => setIsLoading(false);
+  useEffect(() => setIsLoading(true), [message]);
   return (
     <aside className=" flex-1 border-t border-[#eee]">
       <div className="h-[45vh] p-4 overflow-y-scroll scrollbar-thumb-[h-1] scrollbar-track-gray-700">
@@ -22,12 +28,19 @@ export default function Ai({ handleSubmit, message, input, handleChange }) {
             value={input}
             onChange={handleChange}
           />
-          <button
-            type="submit"
-            className="cursor-pointer rounded-r-full"
-          >
-            <LuSendHorizonal size={25} color="#506efa" />
-          </button>
+          {isLoading ? (
+            <button
+              type="submit"
+              className="cursor-pointer rounded-r-full"
+              onClick={handleClick}
+            >
+              <LuSendHorizonal size={25} color="#506efa" />
+            </button>
+          ) : (
+            <button>
+              <FaSpinner className="spin" size={25} color="#506efa" />
+            </button>
+          )}
         </form>
       </div>
     </aside>
@@ -43,18 +56,20 @@ const Message = ({ texte }) => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS chat bubble component"
-            src={`${texte.user == "ai"
+            src={`${
+              texte.user == "ai"
                 ? "https://cdn-icons-png.flaticon.com/512/786/786153.png"
                 : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              }`}
+            }`}
           />
         </div>
       </div>
       <div
-        className={`${texte.user == "me"
+        className={`${
+          texte.user == "me"
             ? "bg-[#506efa] text-white chat-bubble text-sm"
             : "bg-[#d0d9fa] text-black  chat-bubble text-sm"
-          }`}
+        }`}
       >
         <Markdown>{texte.msg}</Markdown>
       </div>

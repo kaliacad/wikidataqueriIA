@@ -5,14 +5,12 @@ import { FaUsers } from "react-icons/fa";
 import { MdOutlineAttribution } from "react-icons/md";
 import { IoBugSharp } from "react-icons/io5";
 
-
 export default function Footer() {
-
   const media = [
     {
       icon: <FaReadme size={25} />,
-      link: 'https://github.com/kaliacad/wikidataqueriIA/wiki',
-      title: 'Documentation',
+      link: "https://github.com/kaliacad/wikidataqueriIA/wiki",
+      title: "Documentation",
     },
     {
       icon: <FaCode size={25} />,
@@ -22,29 +20,28 @@ export default function Footer() {
     {
       icon: <IoBugSharp size={25} />,
       link: "https://github.com/kaliacad/wikidataqueriIA/issues",
-      title: 'Report an issue'
+      title: "Report an issue",
     },
     {
       icon: <LuMessagesSquare size={25} />,
-      link: 'https://github.com/kaliacad/wikidataqueriIA/issues',
-      title: 'Feedback'
+      link: "https://github.com/kaliacad/wikidataqueriIA/issues",
+      title: "Feedback",
     },
     {
       icon: <FaUsers size={25} />,
       link: "https://github.com/kaliacad",
-      title: "Developed by Kali Academy"
+      title: "Developed by Kali Academy",
     },
     {
       icon: <MdOutlineAttribution size={25} />,
       link: "https://kaliacademy.org/",
-      title: "kaliacad"
-    }
+      title: "kaliacad",
+    },
   ];
-
 
   const showMenu = media.map(function (m, i) {
     return (
-      <li>
+      <li key={i}>
         <a
           href={`${m?.link}`}
           target="_blank"
@@ -63,6 +60,6 @@ export default function Footer() {
       <ul className="text-white flex justify-around items-center w-full">
         {showMenu}
       </ul>
-    </footer >
+    </footer>
   );
 }

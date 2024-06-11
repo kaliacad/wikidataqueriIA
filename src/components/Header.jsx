@@ -7,7 +7,12 @@ export default function Header({ onClick }) {
       >
         RUN
       </button>
-      <h1 className="text-[#506efa] text-3xl font-semibold">Wikidata Query AI</h1>
+      <a
+        onClick={() => window.location.reload()}
+        className="text-[#506efa] text-3xl font-semibold"
+      >
+        Wikidata Query AI
+      </a>
     </header>
   );
 }
