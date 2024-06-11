@@ -17,7 +17,7 @@ async function getGPT(question) {
         messages: [
           {
             role: "user",
-            content: `Donne moi le code SPARQL de la requete qui trouver "${question}". Donne seulement le code SPARQL commenté et utilise seulement le "wdt" et les "wd"`,
+            content: `Donne moi le code SPARQL de la requete qui trouver "${question}". Donne seulement le code SPARQL et renvoie aussi le lien de l'element trouver, commenté et utilise seulement le "wdt" et les "wd"`,
           },
         ],
         max_tokens: 150,
