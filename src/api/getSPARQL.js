@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI('AIzaSyDB2XZJwiiBp1SEylnyyLhNI9e_dxxJZzY');
+const genAI = new GoogleGenerativeAI('');
 
 /**
  * SPARQL GET INFORMATION APIS

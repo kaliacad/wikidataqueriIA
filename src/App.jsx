@@ -7,6 +7,7 @@ import Split from "react-split";
 import Footer from "./components/Footer";
 import getGPT from "./api/getGPT";
 
+
 function App() {
   const { sparqlText, setSPARQLText } = useContext(TextContext);
   console.log(sparqlText);
