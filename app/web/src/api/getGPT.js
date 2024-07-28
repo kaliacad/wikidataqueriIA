@@ -1,4 +1,5 @@
-import { API_KEY } from "../../env";
+// import { API_KEY } from "../../env";
+
 
 async function getGPT(question) {
   const apiUrl = "https://api.openai.com/v1/chat/completions";
