@@ -28,3 +28,5 @@ env.js
 src/css/guide.md
 
 env.js
+
+.env

@@ -35,3 +35,5 @@ env.js
 /app/api/node_modules
 
 /app/web/node_modules
+
+/app/web/.env
